@@ -1,5 +1,7 @@
-#!/bin/bash
+#!/bin/sh
 rm -f app
+rm -f app.o
 rm -f foo.hpp
 node ./generate-foo.js > foo.hpp
-c++ app.cpp -o app 
+g++ -I. -c ./src/app.cpp -o app.o 
+g++ app.o -o app 

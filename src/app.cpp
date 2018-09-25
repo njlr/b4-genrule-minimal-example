@@ -1,5 +1,5 @@
 #include <iostream>
-#include "./foo.hpp"
+#include <foo.hpp>
 
 int main() {
   std::cout << "foo() = " << foo() << std::endl;

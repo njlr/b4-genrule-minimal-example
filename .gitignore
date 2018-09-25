@@ -1,3 +1,8 @@
 foo.hpp
 app
+app.o
 /trace
+cxx.json
+/buck-out
+/.buckd
+/artefacts.json

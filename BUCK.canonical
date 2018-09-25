@@ -1,0 +1,19 @@
+genrule(
+  name = 'foo', 
+  out = 'foo.hpp', 
+  srcs = [
+    './generate-foo.js', 
+  ],
+  cmd = 'node ./generate-foo.js > $OUT', 
+)
+
+cxx_binary(
+  name = 'app', 
+  header_namespace = '', 
+  headers = {
+    'foo.hpp': ':foo', 
+  }, 
+  srcs = [
+    'src/app.cpp', 
+  ], 
+)
