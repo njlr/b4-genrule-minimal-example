@@ -1,7 +1,8 @@
 #!/bin/sh
-rm -f app
-rm -f app.o
-rm -f foo.hpp
-node ./generate-foo.js > foo.hpp
-g++ -I. -c ./src/app.cpp -o app.o 
-g++ app.o -o app 
+rm -rf ./build
+mkdir -p ./build
+node ./scripts/generate-foo-hpp.js > ./build/foo.hpp
+node ./scripts/generate-foo-cpp.js > ./build/foo.cpp
+g++ -I./build -c ./build/foo.cpp -o ./build/foo.o 
+g++ -I./build -c ./src/app.cpp -o ./build/app.o 
+g++ ./build/foo.o ./build/app.o -o ./build/app 

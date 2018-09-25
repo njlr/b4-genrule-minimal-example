@@ -1,19 +1,29 @@
 genrule(
-  name = 'foo', 
+  name = 'foo-hpp', 
   out = 'foo.hpp', 
   srcs = [
-    './generate-foo.js', 
+    './scripts/generate-foo-hpp.js', 
   ],
-  cmd = 'node ./generate-foo.js > $OUT', 
+  cmd = 'node ./scripts/generate-foo-hpp.js > $OUT', 
+)
+
+genrule(
+  name = 'foo-cpp', 
+  out = 'foo.cpp', 
+  srcs = [
+    './scripts/generate-foo-cpp.js', 
+  ],
+  cmd = 'node ./scripts/generate-foo-cpp.js > $OUT', 
 )
 
 cxx_binary(
   name = 'app', 
   header_namespace = '', 
   headers = {
-    'foo.hpp': ':foo', 
+    'foo.hpp': ':foo-hpp', 
   }, 
   srcs = [
     'src/app.cpp', 
+    ':foo-cpp', 
   ], 
 )

@@ -1,6 +1,8 @@
 foo.hpp
+foo.cpp
 app
 app.o
+foo.o
 /trace
 cxx.json
 /buck-out

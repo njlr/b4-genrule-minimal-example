@@ -1,15 +1,22 @@
 .PHONY: clean
 
 clean:
-	rm -f app
-	rm -f app.o
-	rm -f foo.hpp
+	rm -rf ./build
 
-foo.hpp: generate-foo.js
-	node ./generate-foo.js > foo.hpp
+./build:
+	mkdir -p ./build
 
-app.o: ./src/app.cpp foo.hpp
-	g++ -I. -c ./src/app.cpp -o app.o 
+./build/foo.hpp: ./build ./scripts/generate-foo-hpp.js
+	node ./scripts/generate-foo-hpp.js > ./build/foo.hpp
 
-app: app.o
-	g++ app.o -o app 
+./build/foo.cpp: ./build ./scripts/generate-foo-cpp.js
+	node ./scripts/generate-foo-cpp.js > ./build/foo.cpp
+
+./build/app.o: ./build ./src/app.cpp ./build/foo.hpp 
+	g++ -I./build -c ./src/app.cpp -o ./build/app.o 
+
+./build/foo.o: ./build ./build/foo.cpp ./build/foo.hpp
+	g++ -I./build -c ./build/foo.cpp -o ./build/foo.o 
+
+./build/app: ./build ./build/app.o ./build/foo.o
+	g++ ./build/foo.o ./build/app.o -o ./build/app 
