@@ -6,20 +6,20 @@ if (!fileName) {
   throw new Error('You must specify a base file-name as CLI argument. ');
 }
 
-const hpp = `#ifndef FOO_HPP
-#define FOO_HPP
+const hpp = `#ifndef BAR_HPP
+#define BAR_HPP
 
-int foo();
+int bar();
 
 #endif
 `;
 
 fs.writeFileSync(fileName + '.hpp', hpp);
 
-const cpp = `#include <foo.hpp>
+const cpp = `#include <bar.hpp>
 
-int foo() {
-  return 7;
+int bar() {
+  return 2;
 }
 `;
 
