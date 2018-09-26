@@ -3,4 +3,4 @@ ignore = .git
 
 [cxx]
 untracked_headers = error
-untracked_headers_whitelist = /usr/include/.*, /usr/lib/.*
+untracked_headers_whitelist = /usr/include/.*, /usr/lib/.*, /usr/local/Cellar/llvm/.*
