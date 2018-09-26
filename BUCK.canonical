@@ -16,14 +16,37 @@ genrule(
   cmd = 'node ./scripts/generate-foo-cpp.js > $OUT', 
 )
 
+genrule(
+  name = 'bars', 
+  out = 'bars', 
+  srcs = [
+    './scripts/generate-bars.js', 
+  ],
+  cmd = 'mkdir -p $OUT && node ./scripts/generate-bars.js $OUT/bar', 
+)
+
+genrule(
+  name = 'bar-hpp', 
+  out = 'bar.hpp', 
+  cmd = 'cp $(location :bars)/bar.hpp $OUT', 
+)
+
+genrule(
+  name = 'bar-cpp', 
+  out = 'bar.cpp', 
+  cmd = 'cp $(location :bars)/bar.cpp $OUT', 
+)
+
 cxx_binary(
   name = 'app', 
   header_namespace = '', 
   headers = {
     'foo.hpp': ':foo-hpp', 
+    'bar.hpp': ':bar-hpp', 
   }, 
   srcs = [
     'src/app.cpp', 
     ':foo-cpp', 
+    ':bar-cpp', 
   ], 
 )
