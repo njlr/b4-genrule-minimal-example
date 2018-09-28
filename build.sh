@@ -4,6 +4,8 @@ mkdir -p ./build
 node ./scripts/generate-foo-hpp.js > ./build/foo.hpp
 node ./scripts/generate-foo-cpp.js > ./build/foo.cpp
 node ./scripts/generate-bars.js ./build/bar
+g++ ./src/baz-generator.cpp -o ./build/baz-generator 
+./build/baz-generator > ./build/baz.hpp
 g++ -I./build -c ./build/foo.cpp -o ./build/foo.o 
 g++ -I./build -c ./build/bar.cpp -o ./build/bar.o 
 g++ -I./build -c ./src/app.cpp -o ./build/app.o 
