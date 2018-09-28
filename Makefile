@@ -10,8 +10,11 @@ clean:
 ./build/bar.hpp ./build/bar.cpp: ./build ./scripts/generate-bars.js
 	node ./scripts/generate-bars.js ./build/bar 
 
-./build/baz-generator: ./build ./src/baz-generator.cpp
-	g++ ./src/baz-generator.cpp -o ./build/baz-generator
+./build/baz-generator.o: ./build ./src/baz-generator.cpp
+	g++ -c ./src/baz-generator.cpp -o ./build/baz-generator.o
+
+./build/baz-generator: ./build/baz-generator.o
+	g++ ./build/baz-generator.o -o ./build/baz-generator
 
 ./build/baz.hpp: ./build ./build/baz-generator
 	./build/baz-generator > ./build/baz.hpp
