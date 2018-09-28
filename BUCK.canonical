@@ -38,11 +38,25 @@ genrule(
 )
 
 cxx_binary(
+  name = 'baz-generator', 
+  srcs = [
+    'src/baz-generator.cpp', 
+  ], 
+)
+
+genrule(
+  name = 'baz-hpp', 
+  out = 'baz.hpp', 
+  cmd = '$(location :baz-generator) > $OUT', 
+)
+
+cxx_binary(
   name = 'app', 
   header_namespace = '', 
   headers = {
     'foo.hpp': ':foo-hpp', 
     'bar.hpp': ':bar-hpp', 
+    'baz.hpp': ':baz-hpp', 
   }, 
   srcs = [
     'src/app.cpp', 
