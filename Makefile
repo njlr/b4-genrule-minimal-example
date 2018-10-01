@@ -16,6 +16,15 @@ clean:
 ./build/baz-generator: ./build/baz-generator.o
 	g++ ./build/baz-generator.o -o ./build/baz-generator
 
+./build/qux-generator.o: ./build ./src/qux-generator.cpp
+	g++ -c ./src/qux-generator.cpp -o ./build/qux-generator.o
+
+./build/qux-generator: ./build ./build/qux-generator.o
+	g++ ./build/qux-generator.o -o ./build/qux-generator
+
+./build/qux.hpp ./build/qux.cpp: ./build ./build/qux-generator
+	./build/qux-generator ./build/qux
+
 ./build/baz.hpp: ./build ./build/baz-generator
 	./build/baz-generator > ./build/baz.hpp
 
@@ -25,8 +34,11 @@ clean:
 ./build/foo.cpp: ./build ./scripts/generate-foo-cpp.js
 	node ./scripts/generate-foo-cpp.js > ./build/foo.cpp 
 
-./build/app.o: ./build ./src/app.cpp ./build/foo.hpp ./build/bar.hpp ./build/baz.hpp
+./build/app.o: ./build ./src/app.cpp ./build/foo.hpp ./build/bar.hpp ./build/baz.hpp ./build/qux.hpp
 	g++ -I./build -c ./src/app.cpp -o ./build/app.o 
+
+./build/qux.o: ./build ./build/qux.cpp ./build/qux.hpp
+	g++ -I./build -c ./build/qux.cpp -o ./build/qux.o 
 
 ./build/foo.o: ./build ./build/foo.cpp ./build/foo.hpp
 	g++ -I./build -c ./build/foo.cpp -o ./build/foo.o 
@@ -34,5 +46,5 @@ clean:
 ./build/bar.o: ./build ./build/bar.cpp ./build/bar.hpp
 	g++ -I./build -c ./build/bar.cpp -o ./build/bar.o 
 
-./build/app: ./build ./build/app.o ./build/foo.o ./build/bar.o 
-	g++ ./build/foo.o ./build/bar.o ./build/app.o -o ./build/app 
+./build/app: ./build ./build/app.o ./build/foo.o ./build/bar.o ./build/qux.o 
+	g++ ./build/foo.o ./build/bar.o ./build/qux.o ./build/app.o -o ./build/app 
