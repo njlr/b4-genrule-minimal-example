@@ -1,6 +1,8 @@
 .PHONY: clean 
 .DEFAULT_GOAL := ./build/app
 
+pwd := $(shell pwd)
+
 clean:
 	rm -rf ./build
 
@@ -35,7 +37,7 @@ clean:
 	node ./scripts/generate-foo-cpp.js > ./build/foo.cpp 
 
 ./build/tux.hpp: ./build ./scripts/generate-tux-hpp.js
-	node `pwd`/scripts/generate-tux-hpp.js > `pwd`/build/tux.hpp
+	node  $(pwd)/scripts/generate-tux-hpp.js > $(pwd)/build/tux.hpp
 
 ./build/app.o: ./build ./src/app.cpp ./build/foo.hpp ./build/bar.hpp ./build/baz.hpp ./build/qux.hpp ./build/tux.hpp
 	g++ -I./build -c ./src/app.cpp -o ./build/app.o 
