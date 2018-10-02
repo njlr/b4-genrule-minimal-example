@@ -12,7 +12,7 @@ int main(int argc, char *argv[]) {
     return 1;
   }
 
-  const auto baseName = args[1];
+  const std::string baseName = args[1];
 
   // qux.hpp
   {

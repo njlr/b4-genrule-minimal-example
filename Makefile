@@ -34,7 +34,10 @@ clean:
 ./build/foo.cpp: ./build ./scripts/generate-foo-cpp.js
 	node ./scripts/generate-foo-cpp.js > ./build/foo.cpp 
 
-./build/app.o: ./build ./src/app.cpp ./build/foo.hpp ./build/bar.hpp ./build/baz.hpp ./build/qux.hpp
+./build/tux.hpp: ./build ./scripts/generate-tux-hpp.js
+	node `pwd`/scripts/generate-tux-hpp.js > `pwd`/build/tux.hpp
+
+./build/app.o: ./build ./src/app.cpp ./build/foo.hpp ./build/bar.hpp ./build/baz.hpp ./build/qux.hpp ./build/tux.hpp
 	g++ -I./build -c ./src/app.cpp -o ./build/app.o 
 
 ./build/qux.o: ./build ./build/qux.cpp ./build/qux.hpp

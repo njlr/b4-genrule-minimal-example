@@ -1,6 +1,7 @@
 #!/bin/sh
 rm -rf ./build
 mkdir -p ./build
+node `pwd`/scripts/generate-tux-hpp.js > `pwd`/build/tux.hpp
 node ./scripts/generate-foo-hpp.js > ./build/foo.hpp
 node ./scripts/generate-foo-cpp.js > ./build/foo.cpp
 node ./scripts/generate-bars.js ./build/bar
