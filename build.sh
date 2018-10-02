@@ -9,6 +9,8 @@ g++ ./src/baz-generator.cpp -o ./build/baz-generator
 ./build/baz-generator > ./build/baz.hpp
 g++ ./src/qux-generator.cpp -o ./build/qux-generator 
 ./build/qux-generator ./build/qux
+node ./scripts/generate-gru-hpp-1.js > ./build/gru.hpp 
+node ./scripts/generate-gru-hpp-2.js >> ./build/gru.hpp 
 g++ -I./build -c ./build/foo.cpp -o ./build/foo.o 
 g++ -I./build -c ./build/bar.cpp -o ./build/bar.o 
 g++ -I./build -c ./build/qux.cpp -o ./build/qux.o 

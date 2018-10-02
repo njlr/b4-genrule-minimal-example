@@ -39,7 +39,11 @@ clean:
 ./build/tux.hpp: ./build ./scripts/generate-tux-hpp.js
 	node  $(pwd)/scripts/generate-tux-hpp.js > $(pwd)/build/tux.hpp
 
-./build/app.o: ./build ./src/app.cpp ./build/foo.hpp ./build/bar.hpp ./build/baz.hpp ./build/qux.hpp ./build/tux.hpp
+./build/gru.hpp: ./build ./scripts/generate-gru-hpp-1.js ./scripts/generate-gru-hpp-2.js 
+	node ./scripts/generate-gru-hpp-1.js > ./build/gru.hpp 
+	node ./scripts/generate-gru-hpp-2.js >> ./build/gru.hpp 
+
+./build/app.o: ./build ./src/app.cpp ./build/foo.hpp ./build/bar.hpp ./build/baz.hpp ./build/qux.hpp ./build/tux.hpp ./build/gru.hpp
 	g++ -I./build -c ./src/app.cpp -o ./build/app.o 
 
 ./build/qux.o: ./build ./build/qux.cpp ./build/qux.hpp
