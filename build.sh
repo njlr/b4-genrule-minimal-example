@@ -14,5 +14,5 @@ node ./scripts/generate-gru-hpp-2.js >> ./build/gru.hpp
 g++ -I./build -c ./build/foo.cpp -o ./build/foo.o 
 g++ -I./build -c ./build/bar.cpp -o ./build/bar.o 
 g++ -I./build -c ./build/qux.cpp -o ./build/qux.o 
-g++ -I./build -c ./src/app.cpp -o ./build/app.o 
+g++ -I./build -isystem./include-system -c ./src/app.cpp -o ./build/app.o 
 g++ ./build/foo.o ./build/bar.o ./build/qux.o ./build/app.o -o ./build/app 
