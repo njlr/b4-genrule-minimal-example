@@ -7,6 +7,7 @@
 #include <tux.hpp>
 #include <gru.hpp>
 #include <soy.hpp>
+#include <a+b/mux.hpp>
 
 int main() {
   std::cout << "foo() = " << foo() << std::endl;
@@ -16,6 +17,7 @@ int main() {
   std::cout << "tux() = " << tux() << std::endl;
   std::cout << "gru() = " << gru() << std::endl;
   std::cout << "soy() = " << soy() << std::endl;
+  std::cout << "mux() = " << mux() << std::endl;
 
   return 0;
 }

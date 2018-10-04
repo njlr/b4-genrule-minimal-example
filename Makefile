@@ -43,8 +43,8 @@ clean:
 	node ./scripts/generate-gru-hpp-1.js > ./build/gru.hpp 
 	node ./scripts/generate-gru-hpp-2.js >> ./build/gru.hpp 
 
-./build/app.o: ./build ./src/app.cpp ./build/foo.hpp ./build/bar.hpp ./build/baz.hpp ./build/qux.hpp ./build/tux.hpp ./build/gru.hpp ./include-system/soy.hpp 
-	g++ -I./build -isystem./include-system -c ./src/app.cpp -o ./build/app.o 
+./build/app.o: ./build ./src/app.cpp ./build/foo.hpp ./build/bar.hpp ./build/baz.hpp ./build/qux.hpp ./build/tux.hpp ./build/gru.hpp ./include-system/soy.hpp ./include/a+b/mux.hpp 
+	g++ -I./include -I./build -isystem./include-system -c ./src/app.cpp -o ./build/app.o 
 
 ./build/qux.o: ./build ./build/qux.cpp ./build/qux.hpp
 	g++ -I./build -c ./build/qux.cpp -o ./build/qux.o 
