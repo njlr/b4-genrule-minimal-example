@@ -1,0 +1,8 @@
+#ifndef MOB_HPP
+#define MOB_HPP
+
+int mob() {
+  return 3;
+}
+
+#endif

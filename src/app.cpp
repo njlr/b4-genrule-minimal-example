@@ -9,6 +9,7 @@
 #include <soy.hpp>
 #include <a+b/mux.hpp>
 #include <fob.hpp>
+#include <mob.hpp>
 
 int main() {
   std::cout << "foo() = " << foo() << std::endl;
@@ -20,6 +21,7 @@ int main() {
   std::cout << "soy() = " << soy() << std::endl;
   std::cout << "mux() = " << mux() << std::endl;
   std::cout << "fob() = " << fob() << std::endl;
+  std::cout << "mob() = " << mob() << std::endl;
 
   return 0;
 }
