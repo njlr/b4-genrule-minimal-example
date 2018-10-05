@@ -1,0 +1,8 @@
+#ifndef FOB_HPP
+#define FOB_HPP
+
+int fob() {
+  return 8;
+}
+
+#endif

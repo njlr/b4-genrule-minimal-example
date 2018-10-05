@@ -8,6 +8,7 @@
 #include <gru.hpp>
 #include <soy.hpp>
 #include <a+b/mux.hpp>
+#include <fob.hpp>
 
 int main() {
   std::cout << "foo() = " << foo() << std::endl;
@@ -18,6 +19,7 @@ int main() {
   std::cout << "gru() = " << gru() << std::endl;
   std::cout << "soy() = " << soy() << std::endl;
   std::cout << "mux() = " << mux() << std::endl;
+  std::cout << "fob() = " << fob() << std::endl;
 
   return 0;
 }

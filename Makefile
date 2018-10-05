@@ -12,6 +12,9 @@ clean:
 ./build/bar.hpp ./build/bar.cpp: ./build ./scripts/generate-bars.js
 	node ./scripts/generate-bars.js ./build/bar 
 
+./build/fob.hpp: ./build ./src/fob.hpp.txt
+	cd ./build && cat ../src/fob.hpp.txt > ./fob.hpp
+
 ./build/baz-generator.o: ./build ./src/baz-generator.cpp
 	g++ -c ./src/baz-generator.cpp -o ./build/baz-generator.o
 
@@ -43,7 +46,7 @@ clean:
 	node ./scripts/generate-gru-hpp-1.js > ./build/gru.hpp 
 	node ./scripts/generate-gru-hpp-2.js >> ./build/gru.hpp 
 
-./build/app.o: ./build ./src/app.cpp ./build/foo.hpp ./build/bar.hpp ./build/baz.hpp ./build/qux.hpp ./build/tux.hpp ./build/gru.hpp ./include-system/soy.hpp ./include/a+b/mux.hpp 
+./build/app.o: ./build ./src/app.cpp ./build/foo.hpp ./build/bar.hpp ./build/baz.hpp ./build/qux.hpp ./build/tux.hpp ./build/gru.hpp ./include-system/soy.hpp ./include/a+b/mux.hpp ./build/fob.hpp 
 	g++ -I./include -I./build -isystem./include-system -c ./src/app.cpp -o ./build/app.o 
 
 ./build/qux.o: ./build ./build/qux.cpp ./build/qux.hpp

@@ -6,6 +6,7 @@ node ./scripts/generate-foo-hpp.js > ./build/foo.hpp
 node ./scripts/generate-foo-cpp.js > ./build/foo.cpp
 node ./scripts/generate-bars.js ./build/bar
 g++ ./src/baz-generator.cpp -o ./build/baz-generator 
+cat ./src/fob.hpp.txt > ./build/fob.hpp
 ./build/baz-generator > ./build/baz.hpp
 g++ ./src/qux-generator.cpp -o ./build/qux-generator 
 ./build/qux-generator ./build/qux
